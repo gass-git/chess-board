@@ -1,20 +1,35 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
+import { AppCtx } from './App'
 
-export default function FormComponent({ data, handleChange, buildBoardData, activateCell }) {
+export default function FormComponent() {
   const navigateTo = useNavigate()
+  const { state, dispatch } = useContext(AppCtx)
+  const { boardSize, maxSteps } = state
 
-  function handleClick() {
-    buildBoardData()
-    activateCell()
+  function handleSubmit() {
+    dispatch({ type: 'build board data' })
+    dispatch({ type: 'activate cell' })
     navigateTo('/chess-board')
+  }
+
+  function handleChange(event) {
+    dispatch({
+      type: 'update input data',
+      propName: event.target.name,
+      inputValue: event.target.value
+    })
   }
 
   return (
     <>
       <Row className='mt-5'>
-        <Form.Group as={Row} className='mb-3' constrolid='form-group-1'>
+        <Form.Group
+          as={Row}
+          className='mb-3'
+          constrolid='form-group-1'
+        >
 
           <Col>
             <Form.Label>
@@ -26,7 +41,7 @@ export default function FormComponent({ data, handleChange, buildBoardData, acti
             <Form.Control
               type='number'
               name='boardSize'
-              value={data.boardSize}
+              value={boardSize}
               onChange={handleChange}
             />
           </Col>
@@ -45,7 +60,7 @@ export default function FormComponent({ data, handleChange, buildBoardData, acti
             <Form.Control
               type='number'
               name='maxSteps'
-              value={data.maxSteps}
+              value={maxSteps}
               onChange={handleChange}
             />
           </Col>
@@ -55,7 +70,7 @@ export default function FormComponent({ data, handleChange, buildBoardData, acti
 
       <Row className='mt-4 justify-content-md-center'>
         <Col className='text-center'>
-          <Button onClick={handleClick}>
+          <Button onClick={handleSubmit}>
             Create Chess Board
           </Button>
         </Col>

@@ -1,19 +1,20 @@
-import React from 'react'
-import Table from 'react-bootstrap/Table'
+import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container'
-import { useEffect } from 'react'
+import { AppCtx } from './App'
 
-export default function ChessBoard({ data, activeCell, setActiveCell }) {
+export default function ChessBoard() {
+  const { state } = useContext(AppCtx)
+  const { rowsArr, colsArr, activeCell } = state
 
   return (
     <Container className='mt-5'>
       <table style={{ border: '1px solid gray', margin: '0 auto' }}>
         {
-          data.rowsArr.map((row, rowIndex) => {
+          rowsArr.map((row, rowIndex) => {
             return (
               <tr>
                 {
-                  data.rowsArr.map((col, colIndex) => {
+                  colsArr.map((col, colIndex) => {
                     let activeRow = activeCell.row
                     let activeCol = activeCell.col
 
