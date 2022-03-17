@@ -1,7 +1,13 @@
 import React from 'react'
 
-export default function Steps() {
+export default function Steps({ moves }) {
   return (
-    <div>Steps</div>
+    <div>{
+      moves.map(pos => {
+        return (
+          <p>{pos.col},{pos.row}</p>
+        )
+      })
+    }</div>
   )
 }
