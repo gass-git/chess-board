@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Container } from 'react-bootstrap'
 import { Navigate, Routes, Route, useNavigate } from 'react-router'
 import FormComponent from './FormComponent'
 import ChessBoard from './ChessBoard'
 import Steps from './Steps'
-
+import useEventListener from '@use-it/event-listener'
 
 export default function App() {
   const navigateTo = useNavigate()
@@ -18,22 +18,13 @@ export default function App() {
   const [activeCell, setActiveCell] = useState({ col: '', row: '' })
   const [data, updateData] = useState(initialState)
 
-  useEffect(() => {
-    document.addEventListener("keydown", handleKeyDown, false)
-    document.addEventListener("keyup", handleKeyUp, false)
-  })
+  useEventListener('keydown', handleKeyDown)
 
   function handleKeyDown(e) {
-    if (e.key === "ArrowRight") {
-      setActiveCell({ ...activeCell, col: activeCell.col + 1 })
-      console.log(e.key)
-    }
+    if (e.key === "ArrowRight") setActiveCell({ ...activeCell, col: activeCell.col + 1 })
     if (e.key === "ArrowLeft") setActiveCell({ ...activeCell, col: activeCell.col - 1 })
     if (e.key === "ArrowDown") setActiveCell({ ...activeCell, row: activeCell.row + 1 })
     if (e.key === "ArrowUp") setActiveCell({ ...activeCell, row: activeCell.row - 1 })
-  }
-  function handleKeyUp(e) {
-
   }
 
   function buildBoardData() {
@@ -60,7 +51,7 @@ export default function App() {
   }
 
   return (
-    <Container>
+    <Container onKeyDown={handleKeyDown}>
       <Routes>
         <Route path='*' element={<Navigate to='/' />} />
         <Route path='/' element={<FormComponent data={data} handleChange={handleChange} buildBoardData={buildBoardData} activateCell={activateCell} />} />
