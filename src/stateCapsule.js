@@ -16,7 +16,8 @@ const ACTIONS = {
   MOVE_DOWN: 'move down',
   MOVE_RIGHT: 'move right',
   MOVE_LEFT: 'move left',
-  SAVE_PREV_POS: 'save previews position'
+  SAVE_PREV_POS: 'save previews position',
+  RESET_APP_STATE: 'reset the state of the app'
 }
 
 function appReducer(state, action) {
@@ -87,6 +88,9 @@ function appReducer(state, action) {
         moves: [...state.moves, newPos],
         currentStep: state.currentStep + 1
       }
+
+    case ACTIONS.RESET_APP_STATE:
+      return initialState
 
     default:
       return state

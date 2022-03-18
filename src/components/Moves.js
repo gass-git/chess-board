@@ -1,10 +1,17 @@
 import React, { useContext } from 'react'
 import { AppCtx } from '../App'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router'
 
 export default function Moves() {
-  const { state } = useContext(AppCtx)
+  const { state, ACTIONS, dispatch } = useContext(AppCtx)
   const { moves } = state
+  const navigateTo = useNavigate()
+
+  function handleClick() {
+    dispatch({ type: ACTIONS.RESET_APP_STATE })
+    navigateTo('/home')
+  }
 
   return (
     <Card className='border-0' style={{ maxWidth: '600px', minWidth: '300px' }} >
@@ -22,6 +29,13 @@ export default function Moves() {
           }
           {']'}
         </h5>
+        <Button
+          className='mt-5'
+          variant='outline-primary'
+          onClick={handleClick}
+        >
+          START OVER
+        </Button>
       </Card.Body>
     </Card>
   )
