@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Row, Card, Button } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { AppCtx } from '../../App'
 import FormGroupOne from './FormGroupOne'
@@ -7,18 +7,18 @@ import FormGroupTwo from './FormGroupTwo'
 
 export default function FormComponent() {
   const navigateTo = useNavigate()
-  const { state, dispatch } = useContext(AppCtx)
+  const { state, ACTIONS, dispatch } = useContext(AppCtx)
   const { boardSize, maxSteps } = state
 
   function handleSubmit() {
-    dispatch({ type: 'build board data' })
-    dispatch({ type: 'activate cell' })
+    dispatch({ type: ACTIONS.SET_BOARD_DATA })
+    dispatch({ type: ACTIONS.ACTIVATE_CELL })
     navigateTo('/game')
   }
 
   function handleChange(event) {
     dispatch({
-      type: 'update input data',
+      type: ACTIONS.UPDATE_INPUT_DATA,
       propName: event.target.name,
       inputValue: event.target.value
     })

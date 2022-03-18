@@ -1,4 +1,4 @@
-export const initialState = {
+const initialState = {
   boardSize: '',
   maxSteps: '',
   colsArr: [],
@@ -8,19 +8,29 @@ export const initialState = {
   currentStep: 0
 }
 
-export function appReducer(state, action) {
+const ACTIONS = {
+  UPDATE_INPUT_DATA: 'update input data',
+  SET_BOARD_DATA: 'build board data',
+  ACTIVATE_CELL: 'activate cell',
+  MOVE_UP: 'move up',
+  MOVE_DOWN: 'move down',
+  MOVE_RIGHT: 'move right',
+  MOVE_LEFT: 'move left',
+  SAVE_PREV_POS: 'save previews position'
+}
+
+function appReducer(state, action) {
   let newCol = state.activeCell.col
   let newRow = state.activeCell.row
 
   switch (action.type) {
-    case 'update input data':
+    case ACTIONS.UPDATE_INPUT_DATA:
       return {
         ...state,
         [action.propName]: Number(action.inputValue)
       }
 
-
-    case 'build board data':
+    case ACTIONS.SET_BOARD_DATA:
       let newArr = []
       for (let i = 0; i < state.boardSize; i++) {
         newArr[i] = i
@@ -29,11 +39,10 @@ export function appReducer(state, action) {
         ...state,
         colsArr: newArr,
         rowsArr: newArr,
-        maxSteps: state.maxSteps - 1
+        maxSteps: state.maxSteps
       }
 
-
-    case 'activate cell':
+    case ACTIONS.ACTIVATE_CELL:
       let activeCol = Math.round(Math.random() * (state.boardSize - 1))
       let activeRow = Math.round(Math.random() * (state.boardSize - 1))
       return {
@@ -41,36 +50,35 @@ export function appReducer(state, action) {
         activeCell: { col: activeCol, row: activeRow }
       }
 
-
-    case 'move up':
+    case ACTIONS.MOVE_UP:
       newRow = state.activeCell.row - 1
       return {
         ...state,
         activeCell: { col: newCol, row: newRow }
       }
 
-    case 'move down':
+    case ACTIONS.MOVE_DOWN:
       newRow = state.activeCell.row + 1
       return {
         ...state,
         activeCell: { col: newCol, row: newRow }
       }
 
-    case 'move right':
+    case ACTIONS.MOVE_RIGHT:
       newCol = state.activeCell.col + 1
       return {
         ...state,
         activeCell: { col: newCol, row: newRow }
       }
 
-    case 'move left':
+    case ACTIONS.MOVE_LEFT:
       newCol = state.activeCell.col - 1
       return {
         ...state,
         activeCell: { col: newCol, row: newRow }
       }
 
-    case 'save previews position':
+    case ACTIONS.SAVE_PREV_POS:
       let col = state.activeCell.col
       let row = state.activeCell.row
       let newPos = { col, row }
@@ -80,9 +88,9 @@ export function appReducer(state, action) {
         currentStep: state.currentStep + 1
       }
 
-
     default:
       return state
   }
 }
 
+export { initialState, ACTIONS, appReducer }

@@ -1,7 +1,9 @@
 import React from 'react'
 import Cell from './Cell'
 
-export default function Table({ rowsArr, colsArr }) {
+export default function Table({ boardSize, rowsArr, colsArr }) {
+  const size = Math.round(400 / boardSize)
+
   return (
     <table style={{ border: '1px solid gray', margin: '0 auto' }}>
       <tbody>
@@ -14,7 +16,7 @@ export default function Table({ rowsArr, colsArr }) {
                     return (
                       <td
                         key={`${rowIndex}-${colIndex}`}
-                        style={{ border: '1px solid gray', width: '50px', height: '50px' }}
+                        style={{ border: '1px solid gray', width: `${size}px`, height: `${size}px` }}
                       >
                         <Cell colIndex={colIndex} rowIndex={rowIndex} />
                       </td>
