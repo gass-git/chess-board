@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppCtx } from './App'
+import { AppCtx } from '../../App'
 
 export default function Steps() {
   const { state } = useContext(AppCtx)
