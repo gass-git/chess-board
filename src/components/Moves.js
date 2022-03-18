@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { AppCtx } from '../../App'
+import { AppCtx } from '../App'
 import { Card } from 'react-bootstrap'
 
 export default function Moves() {
