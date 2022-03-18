@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
-import { Row } from 'react-bootstrap'
+import { Row, Card, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { AppCtx } from '../../App'
 import FormGroupOne from './FormGroupOne'
 import FormGroupTwo from './FormGroupTwo'
-import SubmitButton from './SubmitButton'
 
 export default function FormComponent() {
   const navigateTo = useNavigate()
@@ -26,18 +25,18 @@ export default function FormComponent() {
   }
 
   return (
-    <>
-      <Row className='mt-5'>
+    <Card style={{ maxWidth: '600px', minWidth: '300px' }} >
+      <Card.Body className='text-center'>
         <FormGroupOne handleChange={handleChange} boardSize={boardSize} />
-      </Row >
-
-      <Row>
         <FormGroupTwo handleChange={handleChange} maxSteps={maxSteps} />
-      </Row>
-
-      <Row className='mt-4 justify-content-md-center'>
-        <SubmitButton handleSubmit={handleSubmit} />
-      </Row>
-    </>
+        <Button
+          variant='outline-primary'
+          className='mt-4 mb-3'
+          onClick={handleSubmit}
+        >
+          START
+        </Button>
+      </Card.Body>
+    </Card>
   )
 }
