@@ -12,9 +12,11 @@ export default function Moves() {
         <h5>
           {'['}
           {
-            moves.map((pos) => {
+            moves.map((pos, i) => {
               return (
-                <span>{`{${pos.col},${pos.row}}`}</span>
+                <span key={`${pos}-${i}`}>
+                  {`{${pos.col},${pos.row}}`}
+                </span>
               )
             })
           }
