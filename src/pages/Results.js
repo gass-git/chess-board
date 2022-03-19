@@ -1,6 +1,6 @@
 import React from 'react'
 import Moves from '../components/Moves'
-import Layout from '../utilities/Layout'
+import Layout from '../reusables/Layout'
 import { Button } from 'react-bootstrap'
 
 export default function Results() {

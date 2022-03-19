@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Row, Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { AppCtx } from '../../App'
 import FormGroupOne from './FormGroupOne'
@@ -41,20 +41,26 @@ export default function FormComponent() {
 
   return (
     <>
-      <RedAlert showAlert={showAlert} setShowAlert={setShowAlert} />
-      <Card style={{ maxWidth: '600px', minWidth: '300px' }} >
-        <Card.Body className='text-center'>
-          <FormGroupOne handleChange={handleChange} boardSize={boardSize} />
-          <FormGroupTwo handleChange={handleChange} maxSteps={maxSteps} />
-          <Button
-            variant='outline-primary'
-            className='mt-4 mb-3'
-            onClick={handleSubmit}
-          >
-            START
-          </Button>
-        </Card.Body>
-      </Card>
+      <Container fluid style={{ maxWidth: '600px', minWidth: '300px' }}>
+        <Row>
+          <RedAlert showAlert={showAlert} setShowAlert={setShowAlert} />
+        </Row>
+        <Row>
+          <Card>
+            <Card.Body className='text-center'>
+              <FormGroupOne handleChange={handleChange} boardSize={boardSize} />
+              <FormGroupTwo handleChange={handleChange} maxSteps={maxSteps} />
+              <Button
+                variant='outline-primary'
+                className='mt-4 mb-3'
+                onClick={handleSubmit}
+              >
+                START
+              </Button>
+            </Card.Body>
+          </Card>
+        </Row>
+      </Container>
     </>
   )
 }

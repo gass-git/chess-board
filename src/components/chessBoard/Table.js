@@ -5,7 +5,7 @@ export default function Table({ boardSize, rowsArr, colsArr }) {
   const size = Math.round(400 / boardSize)
 
   return (
-    <table style={{ border: '1px solid gray', margin: '0 auto' }}>
+    <table className='border'>
       <tbody>
         {
           rowsArr.map((row, rowIndex) => {
