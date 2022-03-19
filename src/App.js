@@ -5,11 +5,11 @@ import Home from './pages/Home'
 import Game from './pages/Game'
 import Results from './pages/Results'
 
-
 const AppCtx = React.createContext()
 
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState)
+  const { isGameActive, isResultsActive } = state
 
   return (
     <AppCtx.Provider value={{ state, ACTIONS, dispatch }} key='ctx-key'>
@@ -17,8 +17,8 @@ function App() {
         <Route path='*' element={<Navigate to='/' />} />
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/game' element={<Game />} />
-        <Route path='/results' element={<Results />} />
+        <Route path='/game' element={isGameActive ? <Game /> : <Navigate to='/' />} />
+        <Route path='/results' element={isResultsActive ? <Results /> : <Navigate to='/' />} />
       </Routes>
     </AppCtx.Provider>
   )

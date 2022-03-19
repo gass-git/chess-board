@@ -7,13 +7,13 @@ export default function Cell({ colIndex, rowIndex }) {
   let activeCol = state.activeCell.col
 
   if (activeRow === rowIndex && activeCol === colIndex) {
-    return <div style={{ backgroundColor: 'orange', width: '100%', height: '100%' }}></div>
+    return <div className='orange-cell' />
   }
   else if ((colIndex + rowIndex) % 2 === 0) {
-    return <div style={{ backgroundColor: 'gray', width: '100%', height: '100%' }}></div>
+    return <div className='gray-cell' />
   }
   else {
-    return <div style={{ backgroundColor: 'white', width: '100%', height: '100%' }}></div>
+    return <div className='white-cell' />
   }
 }
 

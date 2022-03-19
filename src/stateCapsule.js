@@ -5,7 +5,9 @@ const initialState = {
   rowsArr: [],
   moves: [],
   activeCell: { col: '', row: '' },
-  currentStep: 0
+  currentStep: 0,
+  isGameActive: false,
+  isResultsActive: false
 }
 
 const ACTIONS = {
@@ -17,6 +19,12 @@ const ACTIONS = {
   MOVE_RIGHT: 'move right',
   MOVE_LEFT: 'move left',
   SAVE_PREV_POS: 'save previews position',
+  ACTIVATE_GAME: 'activate the game page',
+  DEACTIVATE_GAME: 'deactivate the game page',
+  ACTIVATE_RESULTS: 'activate the results page',
+  DEACTIVATE_RESULTS: 'deactivate the results page',
+  RESET_MOVES: 'reset the moves array to initial state',
+  RESET_CURRENT_STEPS: 'reset current steps to inital value',
   RESET_APP_STATE: 'reset the state of the app'
 }
 
@@ -87,6 +95,42 @@ function appReducer(state, action) {
         ...state,
         moves: [...state.moves, newPos],
         currentStep: state.currentStep + 1
+      }
+
+    case ACTIONS.ACTIVATE_GAME:
+      return {
+        ...state,
+        isGameActive: true
+      }
+
+    case ACTIONS.DEACTIVATE_GAME:
+      return {
+        ...state,
+        isGameActive: false
+      }
+
+    case ACTIONS.ACTIVATE_RESULTS:
+      return {
+        ...state,
+        isResultsActive: true
+      }
+
+    case ACTIONS.DEACTIVATE_RESULTS:
+      return {
+        ...state,
+        isResultsActive: false
+      }
+
+    case ACTIONS.RESET_MOVES:
+      return {
+        ...state,
+        moves: []
+      }
+
+    case ACTIONS.RESET_CURRENT_STEPS:
+      return {
+        ...state,
+        currentStep: 0
       }
 
     case ACTIONS.RESET_APP_STATE:

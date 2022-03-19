@@ -14,7 +14,7 @@ export default function Moves() {
   }
 
   return (
-    <Card className='border-0' style={{ maxWidth: '600px', minWidth: '300px' }} >
+    <Card className='maxW-600px-minW-300px' >
       <Card.Body className='text-center'>
         <h5>
           {'['}

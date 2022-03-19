@@ -13,14 +13,17 @@ export default function ChessBoard() {
   useEventListener('keydown', handleKeyDown)
 
   function handleKeyDown(e) {
-    if (currentStep <= maxSteps) {
+    if (currentStep < maxSteps) {
       if (e.key === 'ArrowRight' && isMovable('right')) move('right')
       else if (e.key === 'ArrowLeft' && isMovable('left')) move('left')
       else if (e.key === 'ArrowDown' && isMovable('down')) move('down')
       else if (e.key === 'ArrowUp' && isMovable('up')) move('up')
     }
     if (currentStep + 1 === maxSteps) {
-      setTimeout(() => { navigateTo('/results') }, 200)
+      setTimeout(() => {
+        dispatch({ type: ACTIONS.ACTIVATE_RESULTS })
+        navigateTo('/results')
+      }, 400)
     }
   }
 

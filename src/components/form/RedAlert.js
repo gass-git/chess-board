@@ -5,8 +5,8 @@ export default function RedAlert({ showAlert, setShowAlert }) {
   if (showAlert) {
     return (
       <Alert
-        style={{ maxWidth: '600px', minWidth: '300px' }}
-        variant="danger"
+        className='maxW-600px-minW-300px'
+        variant='danger'
         onClose={() => setShowAlert(false)}
         dismissible
       >
