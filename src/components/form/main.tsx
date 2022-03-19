@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useCallback } from 'react'
 import { Card, Button, Row, Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { AppCtx } from '../../App'
@@ -6,11 +6,15 @@ import FormGroupOne from './FormGroupOne'
 import FormGroupTwo from './FormGroupTwo'
 import RedAlert from './RedAlert'
 
-export default function FormComponent() {
+export default function Form() {
   const navigateTo = useNavigate()
   const { state, ACTIONS, dispatch } = useContext(AppCtx)
   const { boardSize, maxSteps } = state
   const [showAlert, setShowAlert] = useState(false)
+
+  // render RedAlert component only when showAlert state changes
+  const switchAlertOn = useCallback(() => { setShowAlert(true) }, [])
+  const switchAlertOff = useCallback(() => { setShowAlert(false) }, [])
 
   // submit conditions 
   const C: any[] = [
@@ -30,7 +34,7 @@ export default function FormComponent() {
       navigateTo('/game')
     }
     else {
-      setShowAlert(true)
+      switchAlertOn()
     }
   }
 
@@ -45,7 +49,7 @@ export default function FormComponent() {
   return (
     <Container fluid className='maxW-600px-minW-300px'>
       <Row>
-        <RedAlert showAlert={showAlert} setShowAlert={setShowAlert} />
+        <RedAlert showAlert={showAlert} switchAlertOff={switchAlertOff} />
       </Row>
       <Row>
         <Card>

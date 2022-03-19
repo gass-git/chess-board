@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect, memo } from 'react'
 import { Alert } from 'react-bootstrap'
 
-export default function RedAlert({ showAlert, setShowAlert }) {
+function RedAlert({ showAlert, switchAlertOff }) {
   if (showAlert) {
     return (
       <Alert
         className='maxW-600px-minW-300px'
         variant='danger'
-        onClose={() => setShowAlert(false)}
+        onClose={() => switchAlertOff()}
         dismissible
       >
         <Alert.Heading>Oh snap! You got an error! Make sure:</Alert.Heading>
@@ -21,3 +21,5 @@ export default function RedAlert({ showAlert, setShowAlert }) {
     return null
   }
 }
+
+export default memo(RedAlert)
