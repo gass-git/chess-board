@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Game from './pages/Game'
 import Results from './pages/Results'
 
-const AppCtx = React.createContext()
+const AppCtx = React.createContext(null)
 
 function App() {
   const [state, dispatch] = useReducer(appReducer, initialState)

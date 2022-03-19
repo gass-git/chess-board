@@ -10,8 +10,8 @@ export default function RedAlert({ showAlert, setShowAlert }) {
         onClose={() => setShowAlert(false)}
         dismissible
       >
-        <Alert.Heading>Oh snap! You got an error! Make sure you:</Alert.Heading>
-        - Filled all the inputs before starting the game<br />
+        <Alert.Heading>Oh snap! You got an error! Make sure:</Alert.Heading>
+        - The inputs are filled before starting the game<br />
         - The board size is smaller or equal to 20<br />
         - The available steps is smaller or equal to 100<br />
       </Alert >

@@ -19,7 +19,7 @@ export default function Moves() {
         <h5>
           {'['}
           {
-            moves.map((pos, i) => {
+            moves.map((pos: { col: number, row: number }, i: number) => {
               return (
                 <span key={`${pos}-${i}`}>
                   {`{${pos.col},${pos.row}}`}

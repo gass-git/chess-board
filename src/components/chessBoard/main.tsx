@@ -12,7 +12,7 @@ export default function ChessBoard() {
 
   useEventListener('keydown', handleKeyDown)
 
-  function handleKeyDown(e) {
+  function handleKeyDown(e: KeyboardEvent) {
     if (currentStep < maxSteps) {
       if (e.key === 'ArrowRight' && isMovable('right')) move('right')
       else if (e.key === 'ArrowLeft' && isMovable('left')) move('left')
@@ -27,7 +27,7 @@ export default function ChessBoard() {
     }
   }
 
-  function isMovable(direction) {
+  function isMovable(direction: string) {
     switch (direction) {
       case 'right':
         if (activeCell.col === boardSize - 1) return false
@@ -46,7 +46,7 @@ export default function ChessBoard() {
     }
   }
 
-  function move(direction) {
+  function move(direction: string) {
     dispatch({ type: `move ${direction}` })
     dispatch({ type: ACTIONS.SAVE_PREV_POS })
   }

@@ -13,7 +13,7 @@ export default function FormComponent() {
   const [showAlert, setShowAlert] = useState(false)
 
   // submit conditions 
-  const C = [
+  const C: any[] = [
     boardSize !== '',
     boardSize <= 20,
     maxSteps !== '',
@@ -34,7 +34,7 @@ export default function FormComponent() {
     }
   }
 
-  function handleChange(event) {
+  function handleChange(event: any) {
     dispatch({
       type: ACTIONS.UPDATE_INPUT_DATA,
       propName: event.target.name,

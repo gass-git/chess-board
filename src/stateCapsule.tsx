@@ -1,4 +1,6 @@
-const initialState = {
+import { stateTypes } from './types'
+
+const initialState: stateTypes = {
   boardSize: '',
   maxSteps: '',
   colsArr: [],
@@ -10,7 +12,7 @@ const initialState = {
   isResultsActive: false
 }
 
-const ACTIONS = {
+const ACTIONS: Record<string, string> = {
   UPDATE_INPUT_DATA: 'update input data',
   SET_BOARD_DATA: 'build board data',
   ACTIVATE_CELL: 'activate cell',
@@ -28,9 +30,12 @@ const ACTIONS = {
   RESET_APP_STATE: 'reset the state of the app'
 }
 
-function appReducer(state, action) {
-  let newCol = state.activeCell.col
-  let newRow = state.activeCell.row
+function appReducer(state: stateTypes, action: any) {
+  let newCol: number | null = state.activeCell.col
+  let newRow: number | null = state.activeCell.row
+  let activeCol: number | null
+  let activeRow: number | null
+
 
   switch (action.type) {
     case ACTIONS.UPDATE_INPUT_DATA:
@@ -52,8 +57,8 @@ function appReducer(state, action) {
       }
 
     case ACTIONS.ACTIVATE_CELL:
-      let activeCol = Math.round(Math.random() * (state.boardSize - 1))
-      let activeRow = Math.round(Math.random() * (state.boardSize - 1))
+      activeCol = Math.round(Math.random() * (state.boardSize - 1))
+      activeRow = Math.round(Math.random() * (state.boardSize - 1))
       return {
         ...state,
         activeCell: { col: activeCol, row: activeRow }

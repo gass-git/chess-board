@@ -2,17 +2,17 @@ import React from 'react'
 import Cell from './Cell'
 
 export default function Table({ boardSize, rowsArr, colsArr }) {
-  const size = Math.round(400 / boardSize)
+  const size: number = Math.round(400 / boardSize)
 
   return (
     <table className='chess-board'>
       <tbody>
         {
-          rowsArr.map((row, rowIndex) => {
+          rowsArr.map((row: number, rowIndex: number) => {
             return (
               <tr key={`${rowIndex}`}>
                 {
-                  colsArr.map((col, colIndex) => {
+                  colsArr.map((col: number, colIndex: number) => {
                     return (
                       <td
                         key={`${rowIndex}-${colIndex}`}
