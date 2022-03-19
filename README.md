@@ -1,3 +1,7 @@
+## Pending
+
+- Start the game only if the user has inputed numbers on both fields
+
 ## Available Scripts
 
 In the project directory, you can run:
