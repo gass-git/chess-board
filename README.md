@@ -17,7 +17,7 @@ Strict mode has been disabled
 
 Is for components that are reusable 
 
-## Test
+## Tests
 
 Tests done with `Jest`, React `testing-library` and `react-test-renderer` (https://www.npmjs.com/package/react-test-renderer)
 
