@@ -2,12 +2,12 @@
 
 ## stateCapsule.tsx
 
-Here you can find the initial state and the appReducer function to manage the state of the application.
+Here you can find the `initialState` and the `appReducer` function to manage the state of the application.
 
 ## Styles and Grid 
 
 Using sass and React Bootstrap. All the styles
-can be found in customStyles.scss
+can be found in `customStyles.scss`
 
 ## Modifications to tsconfig
 
@@ -19,7 +19,7 @@ Is for components that are reusable
 
 ## Test
 
-Tests done with Jest, React testing-library and react-test-renderer (https://www.npmjs.com/package/react-test-renderer)
+Tests done with `Jest`, React `testing-library` and `react-test-renderer` (https://www.npmjs.com/package/react-test-renderer)
 
 
 
