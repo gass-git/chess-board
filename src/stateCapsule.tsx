@@ -57,8 +57,8 @@ function appReducer(state: stateTypes, action: any) {
       }
 
     case ACTIONS.ACTIVATE_CELL:
-      activeCol = Math.round(Math.random() * (state.boardSize - 1))
-      activeRow = Math.round(Math.random() * (state.boardSize - 1))
+      activeCol = Math.round(1 + Math.random() * (state.boardSize - 1))
+      activeRow = Math.round(1 + Math.random() * (state.boardSize - 1))
       return {
         ...state,
         activeCell: { col: activeCol, row: activeRow }

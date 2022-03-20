@@ -13,6 +13,11 @@ export default function Moves() {
     navigateTo('/home')
   }
 
+  function addComa(index: number) {
+    if (index < moves.length - 1) return ','
+    else return ''
+  }
+
   return (
     <Card className='maxW-600px-minW-300px' >
       <Card.Body className='text-center'>
@@ -22,7 +27,7 @@ export default function Moves() {
             moves.map((pos: { col: number, row: number }, i: number) => {
               return (
                 <span key={`${pos}-${i}`}>
-                  {`{${pos.col},${pos.row}}`}
+                  {`{${pos.col},${pos.row}}` + addComa(i)}
                 </span>
               )
             })

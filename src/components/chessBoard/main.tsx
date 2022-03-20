@@ -19,7 +19,7 @@ export default function ChessBoard() {
       else if (e.key === 'ArrowDown' && isMovable('down')) move('down')
       else if (e.key === 'ArrowUp' && isMovable('up')) move('up')
     }
-    if (currentStep + 1 === maxSteps) {
+    if (currentStep === maxSteps) {
       setTimeout(() => {
         dispatch({ type: ACTIONS.ACTIVATE_RESULTS })
         navigateTo('/results')
@@ -30,17 +30,21 @@ export default function ChessBoard() {
   function isMovable(direction: string) {
     switch (direction) {
       case 'right':
-        if (activeCell.col === boardSize - 1) return false
+        if (activeCell.col === boardSize) return false
         else return true
+
       case 'left':
-        if (activeCell.col === 0) return false
+        if (activeCell.col === 1) return false
         else return true
+
       case 'up':
-        if (activeCell.row === 0) return false
+        if (activeCell.row === 1) return false
         else return true
+
       case 'down':
-        if (activeCell.row === boardSize - 1) return false
+        if (activeCell.row === boardSize) return false
         else return true
+
       default:
         return false
     }
