@@ -6,6 +6,6 @@ export default function StepsLeft() {
   const { maxSteps, currentStep } = state
 
   return (
-    <div>StepsLeft: {currentStep}/{maxSteps}</div>
+    <div>Steps left: {currentStep}/{maxSteps}</div>
   )
 }

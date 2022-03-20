@@ -1,6 +1,8 @@
+# Chess board - TATA assignment
+
 ## stateCapsule.tsx
 
-Here you can find the initial state and the appReducer function.
+Here you can find the initial state and the appReducer function to manage the state of the application.
 
 ## Styles and Grid 
 
@@ -9,13 +11,15 @@ can be found in customStyles.scss
 
 ## Modifications to tsconfig
 
-Strict mode has been changed to false
+Strict mode has been disabled
 
 ## reusables folder
 
 Is for components that are reusable 
 
+## Test
 
+Tests done with Jest, React testing-library and react-test-renderer (https://www.npmjs.com/package/react-test-renderer)
 
 
 

@@ -8,7 +8,11 @@ export default function FormGroupOne({ boardSize, handleChange }) {
         <Form.Label>Chess board size (N x N)</Form.Label>
       </Col>
       <Col xs={6} md={7}>
-        <Form.Control type='number' name='boardSize' value={boardSize} onChange={handleChange} />
+        <Form.Control
+          type='number'
+          name='boardSize'
+          value={boardSize}
+          onChange={handleChange} />
       </Col>
     </Form.Group >
   )

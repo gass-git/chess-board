@@ -16,7 +16,7 @@ export default function Form() {
   const switchAlertOn = useCallback(() => { setShowAlert(true) }, [])
   const switchAlertOff = useCallback(() => { setShowAlert(false) }, [])
 
-  // submit conditions 
+  // submit conditions - validation
   const C: any[] = [
     boardSize !== '',
     boardSize <= 20,

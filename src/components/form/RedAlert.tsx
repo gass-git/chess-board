@@ -5,6 +5,7 @@ function RedAlert({ showAlert, switchAlertOff }) {
   if (showAlert) {
     return (
       <Alert
+        data-testid='alert'
         className='maxW-600px-minW-300px'
         variant='danger'
         onClose={() => switchAlertOff()}
